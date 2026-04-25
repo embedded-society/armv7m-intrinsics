@@ -60,10 +60,6 @@ This library is a **superset** of the ARMv6-M instruction set, since ARMv7-M inc
 | `exclusive.hpp` | `LDREX`, `LDREXH`, `LDREXB`, `STREX`, `STREXH`, `STREXB`, `CLREX` | Load/store-exclusive primitives for lock-free atomics |
 | `saturation.hpp` | `SSAT<sat>`, `USAT<sat>` | Signed/unsigned saturation to `sat` bits (template-encoded) |
 
-## Compatibility
-
-Designed to be a drop-in replacement for the ARMv7-M-relevant subset of the deprecated `ARMCortexM-CppLib::intrinsics` headers. Function names and signatures follow the existing `asmFoo()` convention.
-
 ## Licence
 
 This project is licensed under the Apache License Version 2.0.  
