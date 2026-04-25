@@ -39,23 +39,13 @@ CMake is optional — every header is self-contained, so you can drop the `inclu
 
 All wrappers live in the `ArmCortex` namespace and are `[[gnu::always_inline]] static inline` so the compiler inlines them straight into the call site without function-call overhead.
 
-This library is a **superset** of the ARMv6-M instruction set, since ARMv7-M includes everything in ARMv6-M.
-
-### Inherited from ARMv6-M
-
 | File | Instructions | Notes |
 |------|--------------|-------|
-| `hints.hpp` | `NOP`, `YIELD`, `WFI`, `WFE`, `SEV`, `BKPT<imm>` | Hint-class instructions |
-| `barriers.hpp` | `DSB`, `DMB`, `ISB` | Memory and instruction synchronisation barriers |
-| `interrupts.hpp` | `CPSIE i`, `CPSID i` | Enable/disable maskable exceptions via PRIMASK |
-| `svc.hpp` | `SVC<imm>` | Supervisor call with 8-bit immediate |
-| `reverse.hpp` | `REV`, `REV16`, `REVSH` | Byte-order reversal |
-
-### Added in ARMv7-M
-
-| File | Instructions | Notes |
-|------|--------------|-------|
-| `interrupts.hpp` adds | `CPSIE f`, `CPSID f` | FAULTMASK control (mask all faults except NMI) |
+| `hints.hpp` | `NOP`, `YIELD`, `WFI`, `WFE`, `SEV`, `BKPT<imm>` | Hint-class instructions; `BKPT` takes an 8-bit immediate identifier |
+| `barriers.hpp` | `DSB`, `DMB`, `ISB` | Memory and instruction synchronisation barriers (full system domain) |
+| `interrupts.hpp` | `CPSIE i/f`, `CPSID i/f` | Enable/disable maskable exceptions (PRIMASK) and faults (FAULTMASK) |
+| `svc.hpp` | `SVC<imm>` | Supervisor call with 8-bit immediate (template-encoded) |
+| `reverse.hpp` | `REV`, `REV16`, `REVSH` | Byte-order reversal of word, halfword pairs, and signed lower halfword |
 | `bits.hpp` | `CLZ`, `RBIT` | Count leading zeros, reverse bits |
 | `exclusive.hpp` | `LDREX`, `LDREXH`, `LDREXB`, `STREX`, `STREXH`, `STREXB`, `CLREX` | Load/store-exclusive primitives for lock-free atomics |
 | `saturation.hpp` | `SSAT<sat>`, `USAT<sat>` | Signed/unsigned saturation to `sat` bits (template-encoded) |
