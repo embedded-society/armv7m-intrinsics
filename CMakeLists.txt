@@ -24,6 +24,8 @@ project(armv7m-intrinsics
 add_library(${PROJECT_NAME} INTERFACE)
 
 target_compile_features(${PROJECT_NAME} INTERFACE cxx_std_20)
+target_compile_options(${PROJECT_NAME} INTERFACE -march=armv7-m)
+target_link_options(${PROJECT_NAME} INTERFACE -march=armv7-m)
 
 target_include_directories(${PROJECT_NAME} INTERFACE
     "${CMAKE_CURRENT_SOURCE_DIR}/include"
